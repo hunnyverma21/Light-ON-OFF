@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light ON / OFF</title>
+<style>
+:root{font-family:Inter,system-ui,Arial,sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101827;transition:background .35s}body.on{background:#fff4cb;color:#242424}.panel{text-align:center;padding:42px 34px;border-radius:24px;background:#ffffff12;box-shadow:0 18px 60px #0002;min-width:min(90vw,360px)}body.on .panel{background:#ffffffaa}h1{font-size:1.6rem;margin:0 0 12px}.bulb{font-size:125px;line-height:1.5;filter:grayscale(1) brightness(.5);transition:filter .3s,transform .3s}.on .bulb{filter:drop-shadow(0 0 28px #ffcf28);transform:scale(1.07)}p{font-size:1.15rem}button{cursor:pointer;border:0;border-radius:12px;padding:14px 30px;font-size:1.05rem;font-weight:700;background:#f9c846;color:#202020}button:hover{filter:brightness(1.08)}button:focus-visible{outline:3px solid #4d9fff;outline-offset:4px}
+</style>
+</head>
+<body>
+<main class="panel"><h1>Light Switch</h1><div class="bulb" role="img" aria-label="Light bulb">💡</div><p id="status" aria-live="polite">Light is OFF</p><button id="toggle" type="button" aria-pressed="false">Turn ON</button></main>
+<script>
+const button=document.getElementById('toggle'),status=document.getElementById('status');let isOn=false;button.addEventListener('click',()=>{isOn=!isOn;document.body.classList.toggle('on',isOn);status.textContent=`Light is ${isOn?'ON':'OFF'}`;button.textContent=`Turn ${isOn?'OFF':'ON'}`;button.setAttribute('aria-pressed',String(isOn));});
+</script>
+</body></html>
